@@ -10,7 +10,6 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Scanner;
 
-import rw.TCPServer;
 
 public class Client {
 	public static Socket clientSocket = null;
