@@ -23,7 +23,7 @@ public class Client {
 					new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 			socketOutputStream =  clientSocket.getOutputStream();
 			scanner = new Scanner(System.in);
-			while(!(sentence = scanner.nextLine()).equals("q")) {
+			while(!(sentence = scanner.nextLine()).equals("quit")) {
 				socketOutputStream.write(sentence.getBytes());
 				System.out.println("SERVER: " + inFromServer.readLine());
 			}

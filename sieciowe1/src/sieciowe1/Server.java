@@ -29,17 +29,17 @@ public class Server {
 				PrintWriter out = new PrintWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
 				boolean running = true;
 				while(running) {
-					int bytesReaded = in.read(messageByte);
-					clientSentence = new String(messageByte, 0, bytesReaded);
-					System.out.println("Readed: " + clientSentence);
-					if(!clientSentence.equals("quit")) {
-						out.println(clientSentence);
-						out.flush();
+					int bytesRead = in.read(messageByte);
+					if(bytesRead == -1) {
+						clientSocket.close();
+						System.out.println("Client: " + clientSocket.getInetAddress() + ";" + clientSocket.getPort() + " has stopped.");
+						break;
 					}
-					else {
-						running = false;
-						System.out.print("Client: " + clientSocket.getInetAddress() + ";" + clientSocket.getPort() + " has stopped.");
-					}
+					clientSentence = new String(messageByte, 0, bytesRead);
+					System.out.println("Read: " + clientSentence);
+					out.println(clientSentence);
+					out.flush();
+					
 				}
 			}
 		} catch (IOException e) {
