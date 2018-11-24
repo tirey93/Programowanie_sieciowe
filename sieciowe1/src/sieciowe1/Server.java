@@ -47,13 +47,5 @@ public class Server {
 			e.printStackTrace();
 		}
 	}
-	public static void closeConnection() {
-		try {
-			welcomeSocket.close();
-			//socketOutputStream.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
 
 }
